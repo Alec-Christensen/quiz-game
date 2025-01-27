@@ -1,5 +1,6 @@
 import StartPage from './components/StartPage';
 import React, { useState } from 'react';
+import QuizPage from './components/QuizPage';
 
 
 function App() {
@@ -10,10 +11,10 @@ function App() {
         {!gameStarted ? (
           <StartPage onStart={() => setGameStarted(true)} />
         ) : (
-          <h2>Quiz is starting...</h2>
+          <QuizPage />
         )}
       </div>
   );
-}
+};
 
-export default App
+export default App;
