@@ -19,27 +19,26 @@ body {
 
 button {
   background-color: var(--primary-color);
-  color: var(--background-color);
-  font-size: 1.2rem;
+  color: #1e1e2e;
+  font-size: 1.1rem;
   font-weight: bold;
-  border: 2px solid var(--secondary-color);
+  border: none;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
   background-color: var(--secondary-color);
-  color: var(--foreground-color);
   transform: scale(1.05);
 }
 
 button:disabled {
-  background-color: var(--border-color);
-  color: var(--foreground-color);
+  background-color: #45475a; 
   cursor: not-allowed;
 }
+
 
 .quiz-container {
   display: flex;
