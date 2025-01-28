@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const QuizPage = () => {
+const QuizPage = ({ score, setScore, onFinish }) => {
   // State-variabler
   const [questions, setQuestions] = useState([]); // Håller frågorna från JSON-filen
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Håller koll på aktuell fråga
@@ -24,6 +24,7 @@ const QuizPage = () => {
 
     if (selectedOption === correctAnswer) {
       setFeedback('Correct!');
+      setScore((prevScore) => prevScore + 1);
     } else {
       setFeedback('Wrong!');
     }
@@ -37,9 +38,10 @@ const QuizPage = () => {
     return <div>Loading questions...</div>;
   }
 
-  // Rendera "Quiz finished!" när alla frågor är besvarade
-  if (currentQuestionIndex >= questions.length) {
-    return <div>Quiz finished!</div>;
+  // Kontrollera om quizet är klart och signalera till App.jsx
+  if (questions.length > 0 && currentQuestionIndex >= questions.length) {
+    onFinish(); // Signalera att quizet är klart
+    return null; // Returnera inget eftersom ResultPage visas från App.jsx
   }
 
   // Rendera frågan och svarsalternativen
