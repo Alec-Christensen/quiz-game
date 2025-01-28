@@ -1,0 +1,28 @@
+[
+    {
+      "question": "What is 2 + 2?",
+      "options": ["2", "3", "4"],
+      "answer": "4"
+    },
+    {
+      "question": "What color is the sky?",
+      "options": ["Blue", "Green", "Red"],
+      "answer": "Blue"
+    },
+    {
+      "question": "Which programming language is used with React?",
+      "options": ["Python", "JavaScript", "Ruby"],
+      "answer": "JavaScript"
+    },
+    {
+      "question": "What is the capital of France?",
+      "options": ["Berlin", "Madrid", "Paris"],
+      "answer": "Paris"
+    },
+    {
+      "question": "Which planet is closest to the sun?",
+      "options": ["Venus", "Mercury", "Mars"],
+      "answer": "Mercury"
+    }
+  ]
+  
