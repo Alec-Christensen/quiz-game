@@ -1,68 +1,78 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --background-color: #1e1e2e; 
+  --foreground-color: #cdd6f4; 
+  --primary-color: #89b4fa; 
+  --secondary-color: #b4befe; 
+  --accent-color: #f5c2e7; 
+  --highlight-color: #fab387; 
+  --border-color: #313244; 
 }
 
 body {
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  padding: 0;
+  text-align: center;
 }
 
 button {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid var(--secondary-color);
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.3s ease-in-out;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  background-color: var(--secondary-color);
+  color: var(--foreground-color);
+  transform: scale(1.05);
+}
+
+button:disabled {
+  background-color: var(--border-color);
+  color: var(--foreground-color);
+  cursor: not-allowed;
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Se till att det fyller hela höjden */
+  text-align: center;
+  gap: 15px; /* Lägger till mellanrum mellan elementen */
+}
+
+.quiz-container ul {
+  padding: 0;
+  list-style: none;
+}
+
+.quiz-container li {
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+.quiz-container li:hover {
+  background: var(--secondary-color);
+  cursor: pointer;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Gör att innehållet alltid är centrerat vertikalt */
+  text-align: center;
 }

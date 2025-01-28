@@ -46,7 +46,7 @@ const QuizPage = ({ score, setScore, onFinish }) => {
 
   // Rendera frågan och svarsalternativen
   return (
-    <div>
+    <div className="quiz-container">
       <h2>{questions[currentQuestionIndex].question}</h2>
       <ul>
         {questions[currentQuestionIndex].options.map((option, index) => (
