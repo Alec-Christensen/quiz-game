@@ -63,7 +63,12 @@ const QuizPage = ({ score, setScore, onFinish }) => {
           </li>
         ))}
       </ul>
-      {feedback && <div>{feedback}</div>}
+      {feedback && (
+          <div className={`feedback ${feedback === "Correct!" ? "correct-feedback" : "wrong-feedback"}`}>
+            {feedback}
+          </div>
+        )}
+        
       <button
         onClick={() => {
           setCurrentQuestionIndex((prevIndex) => prevIndex + 1); // Nästa fråga

@@ -75,3 +75,17 @@ button:disabled {
   min-height: 100vh; /* Gör att innehållet alltid är centrerat vertikalt */
   text-align: center;
 }
+
+.feedback {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.correct-feedback {
+  color: #a6e3a1; 
+}
+
+.wrong-feedback {
+  color: #df5078; 
+}
