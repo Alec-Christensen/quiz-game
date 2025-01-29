@@ -44,9 +44,7 @@ const QuizPage = ({ score, setScore, onFinish }) => {
 
   return (
     <div className="quiz-container">
-      {questions.length === 0 ? (
-        <div>Loading questions...</div> // Visar endast denna text tills frågorna är laddade
-      ) : currentQuestionIndex < questions.length ? ( // Kollar att indexet är giltigt innan render
+      {currentQuestionIndex < questions.length ? (
         <>
           <h2>{questions[currentQuestionIndex].question}</h2>
           <ul>
@@ -77,9 +75,9 @@ const QuizPage = ({ score, setScore, onFinish }) => {
             Next Question
           </button>
         </>
-      ) : null} {/* Om quizet är slut, rendera inget här (ResultPage hanteras i App.jsx) */}
+      ) : null}
     </div>
-  );  
+  );
 };
 
 export default QuizPage;
