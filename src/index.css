@@ -89,3 +89,22 @@ button:disabled {
 .wrong-feedback {
   color: #df5078; 
 }
+
+.option {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.option.selected {
+  background-color: var(--primary-color); /* Markera det valda alternativet */
+  color: var(--background-color);
+}
+
+.option.locked {
+  cursor: default;
+  opacity: 0.6;
+}
+

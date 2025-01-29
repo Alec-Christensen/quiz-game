@@ -7,6 +7,8 @@ const QuizPage = ({ score, setScore, onFinish }) => {
   const [feedback, setFeedback] = useState(null); // För rätt/fel-feedback
   const [answered, setAnswered] = useState(false); // Om användaren har svarat
   const [optionsLocked, setOptionsLocked] = useState(false); // Om alternativen är låsta
+  const [selectedOption, setSelectedOption] = useState(null);
+
 
   // Ladda frågor från JSON
   useEffect(() => {
@@ -19,6 +21,8 @@ const QuizPage = ({ score, setScore, onFinish }) => {
   // Hanterar användarens svar
   const handleAnswer = (selectedOption) => {
     if (optionsLocked) return; // Förhindra flera val på samma fråga
+
+    setSelectedOption(selectedOption); // Spara användarens val
 
     const correctAnswer = questions[currentQuestionIndex].answer;
 
@@ -50,17 +54,13 @@ const QuizPage = ({ score, setScore, onFinish }) => {
       <h2>{questions[currentQuestionIndex].question}</h2>
       <ul>
         {questions[currentQuestionIndex].options.map((option, index) => (
-          <li
-            key={index}
-            onClick={() => handleAnswer(option)} // Hantera användarens val
-            style={{
-              cursor: optionsLocked ? 'default' : 'pointer',
-              listStyle: 'none',
-              opacity: optionsLocked ? 0.6 : 1, // Gör alternativen gråa om de är låsta
-            }}
-          >
-            {option}
-          </li>
+        <li
+        key={index}
+        onClick={() => handleAnswer(option)}
+        className={`option ${selectedOption === option ? "selected" : ""} ${optionsLocked ? "locked" : ""}`}
+      >
+        {option}
+        </li>              
         ))}
       </ul>
       {feedback && (
