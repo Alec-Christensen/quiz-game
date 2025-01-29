@@ -15,6 +15,12 @@ const QuizPage = ({ score, setScore, onFinish }) => {
       .catch((error) => console.error('Error loading questions:', error));
   }, []);
 
+  useEffect(() => {
+    if (questions.length > 0 && currentQuestionIndex >= questions.length) {
+      onFinish();
+    }
+  }, [currentQuestionIndex, questions.length]);  
+
   const handleAnswer = (selectedOption) => {
     if (optionsLocked) return;
 
@@ -36,43 +42,44 @@ const QuizPage = ({ score, setScore, onFinish }) => {
     return <div>Loading questions...</div>;
   }
 
-  if (questions.length > 0 && currentQuestionIndex >= questions.length) {
-    onFinish();
-    return null;
-  }
-
   return (
     <div className="quiz-container">
-      <h2>{questions[currentQuestionIndex].question}</h2>
-      <ul>
-        {questions[currentQuestionIndex].options.map((option, index) => (
-          <li
-            key={index}
-            onClick={() => handleAnswer(option)}
-            className={`option ${selectedOption === option ? "selected" : ""} ${optionsLocked ? "locked" : ""}`}
+      {questions.length === 0 ? (
+        <div>Loading questions...</div> // Visar endast denna text tills frågorna är laddade
+      ) : currentQuestionIndex < questions.length ? ( // Kollar att indexet är giltigt innan render
+        <>
+          <h2>{questions[currentQuestionIndex].question}</h2>
+          <ul>
+            {questions[currentQuestionIndex].options.map((option, index) => (
+              <li
+                key={index}
+                onClick={() => handleAnswer(option)}
+                className={`option ${selectedOption === option ? "selected" : ""} ${optionsLocked ? "locked" : ""}`}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+          {feedback && (
+            <div className={`feedback ${feedback === "Correct!" ? "correct-feedback" : "wrong-feedback"}`}>
+              {feedback}
+            </div>
+          )}
+          <button
+            onClick={() => {
+              setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+              setFeedback(null);
+              setAnswered(false);
+              setOptionsLocked(false);
+            }}
+            disabled={!answered}
           >
-            {option}
-          </li>              
-        ))}
-      </ul>
-      {feedback && (
-        <div className={`feedback ${feedback === "Correct!" ? "correct-feedback" : "wrong-feedback"}`}>
-          {feedback}
-        </div>
-      )}
-      <button
-        onClick={() => {
-          setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-          setFeedback(null);
-          setAnswered(false);
-          setOptionsLocked(false);
-        }}
-        disabled={!answered}
-      >
-        Next Question
-      </button>
+            Next Question
+          </button>
+        </>
+      ) : null} {/* Om quizet är slut, rendera inget här (ResultPage hanteras i App.jsx) */}
     </div>
-  );
+  );  
 };
 
 export default QuizPage;

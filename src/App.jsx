@@ -7,7 +7,7 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
-
+  
   return (
     <div>
       {!gameStarted ? (
